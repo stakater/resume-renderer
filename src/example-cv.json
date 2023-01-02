@@ -1,0 +1,44 @@
+{
+  "name": "John Doe",
+  "title": "Senior Software Engineer",
+  "summary": "Moatter is a passionate digital designer with more than 4 years of experience in the design industry and a deep understanding of branding, social media marketing design, user experience, and user interface design. She has been taking on different design roles for the last four years. Her technical background has always been a plus point in proving her to be a versatile team player and enhancing her work efficiency. Moatter is well-versed in multiple design software with an in-depth understanding of user research. She is a great problem solver with a strong work ethic and a humble attitude toward herself. Moatter keeps pushing her boundaries to achieve organizational goals while building and improving her own skillset"
+  "skills": {
+    "highlights": ["Kubernetes", "Java", "Docker"],
+    "items": [{
+      "name": "language/tools",
+      "items": [
+        "Java",
+        "Python",
+        "Golang"
+      ]
+    }, {
+      "name": "DevOps",
+      "items": [
+        "Kubernetes",
+        "Docker",
+        "Git"
+      ]
+    }, {
+      "name": "Frameworks",
+      "items": [
+        "RHSSO",
+        "React",
+        "Angular"
+      ]
+    }]
+  },
+  "awardsAndCertifications": [{
+    "group": "Certifications",
+    "items": [
+      "AWS certified developer",
+      "CKA Kubernetes Administrator",
+      "CKS Kubernetes Application Developer"
+    ]
+  }, {
+    "group": "Acknowledgements",
+    "items": [
+      "Employee of the year 2021",
+      "Developer of the year 2021",
+    ]
+  }]
+}

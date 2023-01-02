@@ -1,13 +1,29 @@
+@import "paper-css/paper.css";
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Montserrat', sans-serif;font-size: 11pt;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+}
+
+.A4 {
+  position: relative;
+}
+
+.A4 .header {
+  width: 210mm;
+  padding: 5mm;
+}
+
+.A4 .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 210mm;
 }
