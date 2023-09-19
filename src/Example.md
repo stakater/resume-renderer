@@ -1,25 +1,17 @@
 ++ Page
 : logo
 : contact
-
-# h1
-## h2
-### h3
-: footer
+# page 1
 ++
 
 ++ Page
 : logo
-
-# h1
-## h2
-### h3
+: contact
+# page 2
 ++
 
 ++ Page
 : logo
-
-# h1
-## h2
-### h3
+: contact
+# page 3
 ++

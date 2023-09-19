@@ -3,13 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.3",
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.9",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/utils": "^4.11.3",
+    "@material-ui/icons": "^4.11.3",
     "dompurify": "^2.4.1",
     "lodash": "^4.17.21",
     "marked": "^4.2.5",
@@ -18,7 +14,8 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-html-parser": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,8 +42,16 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.3",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
     "@types/dompurify": "^2.4.0",
     "@types/lodash": "^4.14.191",
-    "@types/marked": "^4.0.8"
+    "@types/marked": "^4.0.8",
+    "@types/react-html-parser": "^2.0.2"
   }
 }

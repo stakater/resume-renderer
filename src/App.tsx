@@ -6,6 +6,7 @@ import Summary from "./components/summary";
 import Skills from "./components/skills";
 import {marked} from 'marked';
 import example from "./Example.md"
+import DocumentContainer from "./mdx-generator/document-container";
 
 function App() {
     const [md, setMD] = useState<string>("");
@@ -30,6 +31,7 @@ function App() {
 
     return (
         <>
+            <DocumentContainer documentPath={example}/>
             <div dangerouslySetInnerHTML={{__html: marked.parse(md)}}/>
             <Page>
                 <Summary/>
