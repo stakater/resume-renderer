@@ -9,9 +9,13 @@ import Employment from "./components/employment";
 import {marked} from 'marked';
 import example from "./Example.md"
 import DocumentContainer from "./mdx-generator/document-container";
+import InfoEditor from './components/info-editor/InfoEditor';
+import { testData } from './sample';
+import { IResume } from './interfaces/resume.interface';
 
 function App() {
     const [md, setMD] = useState<string>("");
+    const [data, setData] = useState<IResume>(testData);
 
     useEffect(() => {
         fetch(example)
@@ -32,26 +36,43 @@ function App() {
     });
 
     return (
-        <>
-            <DocumentContainer documentPath={example}/>
-            <div dangerouslySetInnerHTML={{__html: marked.parse(md)}}/>
-            <Page>
-                <Summary/>
-                <Divider title="Skills"/>
-                <Skills/>
-            </Page>
+        <div style={{
+            display: 'flex',
+            gap: 20
+        }}>
+            {/* <DocumentContainer documentPath={example}/>
+            <div dangerouslySetInnerHTML={{__html: marked.parse(md)}}/> */}
+            <div style={{
+                background: '#fff',
+                padding: 20,
+                flexGrow: 1
+            }}>
+                <InfoEditor data={data} setData={setData}></InfoEditor>
+            </div>
+            <div style={{
+                height: '100vh',
+                overflowX: 'auto'
+            }}>
+                <div id="printableDiv">
+                <Page>
+                    <Summary summary={data.summary}/>
+                    <Divider title="skills"/>
+                    <Skills skillSet={data.skillSet}/>
+                </Page>
 
-            <Page>
-                <Divider title="Projects"/>
-                <Project/>
-            </Page>
-            <Page>
-                <Divider title="Employments"/>
-                <Employment/>
-                <Employment/>
-                <Employment/>
-            </Page>
-        </>
+                <Page>
+                    <Divider title="Projects"/>
+                    <Project/>
+                </Page>
+                <Page>
+                    <Divider title="Employments"/>
+                    <Employment/>
+                    <Employment/>
+                    <Employment/>
+                </Page>
+                </div>
+            </div>
+        </div>
     );
 }
 
