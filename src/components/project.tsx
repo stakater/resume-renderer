@@ -1,48 +1,15 @@
 import React from 'react';
 import Box from "./box";
+import { IProject } from "../interfaces/resume.interface";
 
-interface IProjectProps {
-    company: string;
-    title: string;
-    period: string; // Format Jun 2020 → May 2023
-    description: string;
-    responsibilities: string[];
-    technologies: string[];
-}
-
-const exampleProject: IProjectProps = {
-    company: "Nortical",
-    title: "Founding Engineer Project",
-    period: "Jun 2020 → May 2023",
-    description: `
-As a founding engineer, designed and
-implemented the majority of infrastructure and
-services, focusing on efficient data pipelines,
-deterministic builds, and CI/CD workflows.
-Collaborated closely with analytics and
-technical teams, ensuring smooth operation
-and integrations
-    `,
-    responsibilities: [
-        "Designing a robust CI/CD workflow with GitHub Actions, Terraform, and Nix, utilizing Git for version control.",
-        "Building a routing layer using the Cloudflare serverless stack",
-        "Architecting efficient data pipelines on Google Cloud using TypeScript, Go, Elixir, and Python."
-    ],
-    technologies: [
-        "TypeScript", "Go", "Elixir", "Python", "Shell scripting",
-        "Nix", "CI/CD", "Terraform", "Git", "Google Cloud",
-    ],
-}
-
-const Project = () => {
-    const project = exampleProject
+const Project = ({project}: {project: IProject}) => {
     return (
         <Box margin = "5mm" marginLeft="15mm" marginRight="15mm">
-            <Box padding='5mm' textAlign='center' borderWidth='1' borderRadius='25px' borderStyle='solid' borderColor='#f0cb31'>
+            <Box padding='0mm' textAlign='left'>
                 <h2>{project.company}</h2>
             </Box>
             <Box>
-                <h4>{project.title}<br/>{project.period}</h4>
+                <h4>{project.name}<br/>{project.startDate} → {project.endDate}</h4>
             </Box>
             <Box>
                 {project.description}

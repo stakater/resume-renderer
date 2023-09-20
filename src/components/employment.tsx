@@ -1,5 +1,6 @@
 import Box from "./box";
 import { Z_VERSION_ERROR } from 'zlib';
+import { IEmployment} from "../interfaces/resume.interface";
 
 interface IEmploymentProps {
     title: string;
@@ -22,20 +23,15 @@ and data pipelines.
     `
 }
 
-const Employment = () => {
-    const employment = exampleEmployment
+const Employment = ({employment}: {employment: IEmployment}) => {
     return (
         <Box margin = "5mm" marginLeft="15mm" marginRight="15mm">
             <Box>
-                <h4>{employment.title} - {employment.company}<br/>{employment.location}<br/>{employment.period}</h4>
+                <h4>{employment.position} - {employment.company}<br/>{employment.location}<br/>{employment.startDate} → {employment.endDate}</h4>
             </Box>
             <Box>
-                {employment.description}
-            </Box>
-            <Box>
-                <h4>Responsibilities</h4>
                 <ul>
-                <li> {employment.description} </li>
+                <li> {employment.summary} </li>
                 </ul>
             </Box>
         </Box>

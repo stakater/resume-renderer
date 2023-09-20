@@ -19,11 +19,12 @@ research.
 },
   "employments": [
     {
-      "name": "Company",
-      "position": "President",
-      "startDate": "2013-01-01",
-      "endDate": "2014-01-01",
-      "summary": "Description…",
+      "company": "Nortical",
+      "position": "Cloud Engineer",
+      "location": "Gothenborg",
+      "startDate": "May 2019",
+      "endDate": "Jun 2022",
+      "summary": "Description… Yes did some stuff!",
       "highlights": [
         "Started the company"
       ]
@@ -45,23 +46,38 @@ research.
   ],
   "skillSet": {
     "highlights": [
-      {
-        "iconUrl": "",
-        "name": ""
-      }
+      "Kubernetes", "Redis", "Spring"
     ],
     "skills": [
       {
-        "name": "Web Development",
-        "level": "Master",
+        "name": "DevOps",
+        "keywords": [
+          "Jenkins", "Docker", "Kubernetes","SonarQube", "Maven", "Tomcat", "Git"
+        ]
+      },
+      {
+        "name": "Web",
         "keywords": [
           "HTML",
           "CSS",
           "JavaScript"
         ]
+      },
+      {
+        "name": "Databases",
+        "keywords": [
+          "Oracle", "MySQL", "Hbase", "Reddis", "Cassandra", "Amazon QLDB", "PostgreSql"
+        ]
+      },
+      {
+        "name": "Frameworks",
+        "keywords": [
+          "Spring Boot", "Spring JPA", "Spring Security", "Spring LDAP",
+          "Spring Quartz Scheduler", "Hibernate", "Angular", "Hadoop", "Solr",
+          "Clarabridge", "RabbitMQ", "SiteMinder SSO"
+        ],
       }
     ],
-    "frameworks": ["test1"],
   },
   "references": [
     {
@@ -71,9 +87,10 @@ research.
   ],
   "projects": [
     {
-      "name": "Project",
-      "startDate": "2019-01-01",
-      "endDate": "2021-01-01",
+      "name": "Headlight Engineer Project",
+      "company": "Volvo",
+      "startDate": "Jan 2019",
+      "endDate": "Feb 2020",
       "description": "Description...",
       "responsibilities": [
         "Won award at AIHacks 2016"
@@ -81,6 +98,27 @@ research.
       "technologies": [
         "c#"
       ]
+    },
+    {
+      "name": "Wheel Engineer Project",
+      "company": "Scania",
+      "startDate": "Mar 2020",
+      "endDate": "Nov 2022",
+      "description": `
+As a founding engineer, designed and implemented the majority of infrastructure
+and services, focusing on efficient data pipelines, deterministic builds, and CI/CD
+workflows. Collaborated closely with analytics and technical teams, ensuring smooth
+operation and integrations
+      `,
+      "responsibilities": [
+        "Designing a robust CI/CD workflow with GitHub Actions, Terraform, and Nix, utilizing Git for version control.",
+        "Building a routing layer using the Cloudflare serverless stack",
+        "Architecting efficient data pipelines on Google Cloud using TypeScript, Go, Elixir, and Python."
+      ],
+      "technologies": [
+        "TypeScript", "Go", "Elixir", "Python", "Shell scripting",
+        "Nix", "CI/CD", "Terraform", "Git", "Google Cloud",
+      ],
     }
   ]
 };

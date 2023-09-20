@@ -1,10 +1,10 @@
 export interface IResume {
     summary:     ISummary;
-    employments: Employment[];
-    education:   Education[];
-    skillSet:    SkillSet;
-    references:  Reference[];
-    projects:    Project[];
+    employments: IEmployment[];
+    education:   IEducation[];
+    skillSet:    ISkillSet;
+    references:  IReference[];
+    projects:    IProject[];
 }
 
 export interface ISummary {
@@ -14,7 +14,7 @@ export interface ISummary {
     education: string[];
 }
 
-export interface Location {
+export interface ILocation {
     address:     string;
     postalCode:  string;
     city:        string;
@@ -22,13 +22,13 @@ export interface Location {
     region:      string;
 }
 
-export interface Profile {
+export interface IProfile {
     network:  string;
     username: string;
     url:      string;
 }
 
-export interface Education {
+export interface IEducation {
     institution: string;
     url:         string;
     area:        string;
@@ -39,17 +39,19 @@ export interface Education {
     courses:     string[];
 }
 
-export interface Employment {
-    name:       string;
+export interface IEmployment {
+    company:    string;
     position:   string;
+    location:   string;
     startDate:  string;
     endDate:    string;
     summary:    string;
     highlights: string[];
 }
 
-export interface Project {
+export interface IProject {
     name:             string;
+    company:          string;
     startDate:        string;
     endDate:          string;
     description:      string;
@@ -57,24 +59,18 @@ export interface Project {
     technologies:     string[];
 }
 
-export interface Reference {
+export interface IReference {
     name:      string;
     reference: string;
 }
 
-export interface SkillSet {
-    highlights: Highlight[];
-    skills:     Skill[];
-    frameworks: string[];
+export type TValidHighlight = "Kubernetes" | "Redis" | "Spring"
+export interface ISkillSet {
+    highlights: TValidHighlight[];
+    skills:     ISkill[];
 }
 
-export interface Highlight {
-    iconUrl: string;
-    name:    string;
-}
-
-export interface Skill {
+export interface ISkill {
     name:     string;
-    level:    string;
     keywords: string[];
 }

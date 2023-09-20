@@ -9,13 +9,13 @@ interface ISkillItemProps {
 const SkillItem = ({title, items}: ISkillItemProps) => {
     return (
         <Box display="flex" alignItems="stretch" border={`solid thin ${STAKATER_COLORS.yellow["0"]}`}>
-            <Box display="flex" alignItems="center" padding="2.5mm 5mm" minWidth="30%" backgroundColor={STAKATER_COLORS.yellow["0"]}>
+            <Box display="flex" alignItems="center" padding="2.5mm 5mm" width="40%" backgroundColor={STAKATER_COLORS.yellow["0"]}>
                 <small>
                     <b>{title}</b>
                 </small>
             </Box>
 
-            <Box display="flex" alignItems="center" padding="3mm 5mm" textAlign="center">
+            <Box display="flex" alignItems="center" padding="3mm 5mm" textAlign="left">
                 <small>{items.join(", ")}</small>
             </Box>
         </Box>

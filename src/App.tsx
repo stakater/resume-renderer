@@ -62,13 +62,11 @@ function App() {
 
                 <Page>
                     <Divider title="Projects"/>
-                    <Project/>
+                    {data.projects.map(project => <Project project={project}/>)}
                 </Page>
                 <Page>
                     <Divider title="Employments"/>
-                    <Employment/>
-                    <Employment/>
-                    <Employment/>
+                    {data.employments.map(employment => <Employment employment={employment}/>)}
                 </Page>
                 </div>
             </div>
