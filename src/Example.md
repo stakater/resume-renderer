@@ -1,6 +1,6 @@
 ++ Page
-: logo
-: contact
+:logo
+:contact
 # page 1
 ++
 
