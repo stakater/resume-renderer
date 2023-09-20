@@ -1,59 +1,6 @@
-// import { Box, SvgIcon, Typography, styled } from "@mui/material";
 import { useState } from "react";
 import './InfoEditor.css';
 import {KeyboardArrowDown, KeyboardArrowRight } from '@material-ui/icons';
-// const Counter = styled(Typography)(({ theme }) => ({
-//   width: 32,
-//   height: 32,
-//   display: "flex",
-//   justifyContent: "center",
-//   alignItems: "center",
-//   borderRadius: 4,
-//   top: 4,
-//   border: `1px solid ${theme.colors.divider.light}`,
-//   position: "absolute",
-// }));
-
-// const DataViewBox = styled(Box)(({ theme }) => ({
-//   height: 32,
-//   //display: "flex",
-//   alignItems: "center",
-//   flexGrow: 1,
-//   gap: 8,
-//   borderRadius: 4,
-//   border: `1px solid ${theme.colors.divider.light}`,
-//   paddingInline: 8,
-//   marginTop: 4,
-//   alignContent: "center",
-//   display: "grid",
-//   gridTemplateColumns: "auto auto auto 1fr",
-// }));
-
-// const CustomChip = styled(Typography)(({ theme }) => ({
-//   borderRadius: 2,
-//   padding: "2px 4px",
-//   backgroundColor: "#E9F5F2",
-//   color: "#1F9981",
-//   whiteSpace: "nowrap",
-//   overflow: "hidden",
-//   textOverflow: "ellipsis",
-// }));
-
-// const Path = styled(Box)(({ theme }) => ({
-//   position: "absolute",
-//   width: 20,
-//   height: 36,
-//   top: -11,
-//   borderBottom: `2px solid ${theme.colors.divider.light}`,
-//   borderBottomLeftRadius: 4,
-// }));
-
-// const Line = styled(Box)(({ theme }) => ({
-//   position: "absolute",
-//   height: "calc(100% - 13px)",
-//   borderLeft: `2px solid ${theme.colors.divider.light}`,
-//   width: 1,
-// }));
 
 const isJSONString = (str: string) => {
   try {
