@@ -36,16 +36,23 @@ function App() {
     });
 
     return (
-        <>
+        <div style={{
+            display: 'flex',
+            gap: 20
+        }}>
             {/* <DocumentContainer documentPath={example}/>
             <div dangerouslySetInnerHTML={{__html: marked.parse(md)}}/> */}
             <div style={{
                 background: '#fff',
-                padding: 20
+                padding: 20,
+                flexGrow: 1
             }}>
                 <InfoEditor data={data} setData={setData}></InfoEditor>
             </div>
-            <div>
+            <div id="print-div" style={{
+                height: '100vh',
+                overflowX: 'auto'
+            }}>
                 <Page>
                     {/* basicInfo={data.basics} */}
                     <Summary summary={data.summary}/>
@@ -64,7 +71,7 @@ function App() {
                     <Employment/>
                 </Page>
             </div>
-        </>
+        </div>
     );
 }
 
