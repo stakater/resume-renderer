@@ -21,6 +21,7 @@
 .divider-text {
   font-weight: 700;
   font-size: 14pt;
+  color: #FFFFFFFF
 }
 
 h1 {
@@ -29,7 +30,7 @@ h1 {
 }
 h2 {
   font-size: 22pt;
-  color: gray;
+  color: #5E5E5F;
   font-weight: bolder;
 }
 h3 {

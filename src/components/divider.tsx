@@ -16,7 +16,7 @@ const Divider = ({title}: IDividerProps) => {
             </Box>
 
             <Box display="flex" height="10mm" width="10mm" position="absolute" top={0} gridGap="1mm" alignItems="center">
-                <Box className="divider-text" paddingLeft="10mm" paddingRight="10mm" minWidth="50mm" color="white" textTransform="capitalize">
+                <Box className="divider-text" paddingLeft="10mm" paddingRight="10mm" minWidth="50mm" textTransform="capitalize">
                     {title}
                 </Box>
                 <Box height="13mm" borderLeft="solid 1.5mm white" transform="rotate(20deg) translateY(-1mm)"/>

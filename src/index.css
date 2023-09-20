@@ -3,6 +3,8 @@
 @media print {
   body * {
     visibility: hidden;
+    -webkit-print-color-adjust: exact;
+            color-adjust: exact; /* Non-Webkit Browsers */
   }
   #printableDiv, #printableDiv * {
     visibility: visible;

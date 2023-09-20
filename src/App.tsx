@@ -62,14 +62,16 @@ function App() {
                 <div id="printableDiv">
                 <Page>
                     <Summary summary={data.summary}/>
-                    <Divider title="skills"/>
+                    <Divider title="Skillset"/>
                     <Skills skillSet={data.skillSet}/>
                 </Page>
 
-                <Page>
-                    <Divider title="Projects"/>
-                    {data.projects.map(project => <Project project={project}/>)}
-                </Page>
+                {data.projects.map(project =>
+                    <Page>
+                        <Divider title="Projects"/>
+                        <Project project={project}/>)
+                    </Page>
+                )}
                 <Page>
                     <Divider title="Employments"/>
                     {data.employments.map(employment => <Employment employment={employment}/>)}
