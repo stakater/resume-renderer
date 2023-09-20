@@ -4,6 +4,8 @@ import Page from "./components/page";
 import Divider from "./components/divider";
 import Summary from "./components/summary";
 import Skills from "./components/skills";
+import Project from "./components/project";
+import Employment from "./components/employment";
 import {marked} from 'marked';
 import example from "./Example.md"
 import DocumentContainer from "./mdx-generator/document-container";
@@ -35,12 +37,19 @@ function App() {
             <div dangerouslySetInnerHTML={{__html: marked.parse(md)}}/>
             <Page>
                 <Summary/>
-                <Divider title="skills"/>
+                <Divider title="Skills"/>
                 <Skills/>
             </Page>
 
             <Page>
-                <h1>2</h1>
+                <Divider title="Projects"/>
+                <Project/>
+            </Page>
+            <Page>
+                <Divider title="Employments"/>
+                <Employment/>
+                <Employment/>
+                <Employment/>
             </Page>
         </>
     );
