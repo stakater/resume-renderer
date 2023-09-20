@@ -49,12 +49,12 @@ function App() {
             }}>
                 <InfoEditor data={data} setData={setData}></InfoEditor>
             </div>
-            <div id="print-div" style={{
+            <div style={{
                 height: '100vh',
                 overflowX: 'auto'
             }}>
+                <div id="printableDiv">
                 <Page>
-                    {/* basicInfo={data.basics} */}
                     <Summary summary={data.summary}/>
                     <Divider title="skills"/>
                     <Skills skillSet={data.skillSet}/>
@@ -70,6 +70,7 @@ function App() {
                     <Employment/>
                     <Employment/>
                 </Page>
+                </div>
             </div>
         </div>
     );
