@@ -208,7 +208,7 @@ export default function InfoEditor({ data, setData }: any) {
   traverse(data, null);
   return <div className="editor-box">
     <Items data={data} onChange={(newState: any) => setData(newState)} counterObj={result}></Items>
-    <button style={{
+    {/* <button style={{
       border: '1px solid rgb(234, 236, 238)',
       marginTop: 20,
       width: 300,
@@ -216,6 +216,6 @@ export default function InfoEditor({ data, setData }: any) {
       background: 'rgb(240, 203, 49)',
       alignSelf: 'center',
       borderRadius: 8
-    }}>Generate CV</button>
+    }}>Generate CV</button> */}
   </div>;
 }

@@ -7,15 +7,16 @@ import Skills from "./components/skills";
 import Project from "./components/project";
 import Employment from "./components/employment";
 import {marked} from 'marked';
-import example from "./Example.md"
-import DocumentContainer from "./mdx-generator/document-container";
-import InfoEditor from './components/info-editor/InfoEditor';
+import example from "./Example.md";
 import { testData } from './sample';
 import { IResume } from './interfaces/resume.interface';
+import YAMLEditor from './components/yaml-editor/YamlEditor';
+import InfoEditor from './components/info-editor/InfoEditor';
 
 function App() {
     const [md, setMD] = useState<string>("");
     const [data, setData] = useState<IResume>(testData);
+    const [showYaml, setShowYaml] = useState<boolean>(false);
 
     useEffect(() => {
         fetch(example)
@@ -34,6 +35,9 @@ function App() {
         smartypants: false,
         xhtml: false
     });
+    const yamlChange = (newData: any)=> {
+        setData({...newData});
+    }
 
     return (
         <div style={{
@@ -47,7 +51,9 @@ function App() {
                 padding: 20,
                 flexGrow: 1
             }}>
-                <InfoEditor data={data} setData={setData}></InfoEditor>
+                <button onClick={() => setShowYaml(pre => !pre)}>Show {showYaml? 'Editor view': 'Yaml View'}</button>
+                {!showYaml && <InfoEditor data={data} setData={setData}></InfoEditor>}
+                {showYaml && <YAMLEditor initialJSON={data} yamlChange={yamlChange}></YAMLEditor>}
             </div>
             <div style={{
                 height: '100vh',
