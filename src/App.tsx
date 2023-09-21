@@ -4,39 +4,57 @@ import Page from "./components/page";
 import Divider from "./components/divider";
 import Summary from "./components/summary";
 import Skills from "./components/skills";
-import Project from "./components/project";
+import ProjectSummary from "./components/project-summary";
+import ProjectResponsibilities from "./components/project-responsibilities";
 import Employment from "./components/employment";
 import {marked} from 'marked';
 import example from "./Example.md";
 import { testData } from './sample';
-import { IResume } from './interfaces/resume.interface';
+import { IResume, IProject } from './interfaces/resume.interface';
 import YAMLEditor from './components/yaml-editor/YamlEditor';
 import InfoEditor from './components/info-editor/InfoEditor';
+
+const ProjectPart = {
+	Summary: 0,
+	Responsibilities: 1,
+}
+
+interface IProjectPart extends IProject {
+  part: number;
+}
 
 function App() {
     const [md, setMD] = useState<string>("");
     const [data, setData] = useState<IResume>(testData);
     const [showYaml, setShowYaml] = useState<boolean>(false);
     const projects = useMemo(() => {
-        const output = [];
-        let temp: any[] = [];
-        if(data.projects)
-        data.projects.forEach(item => {
-            if(item.pageBreak) {
-                if(temp.length > 0) {
-                    output.push(temp);
-                    temp = [];
-                }
-                output.push([item]);
-            } else {
-                temp.push(item);
-            }
-        });
+        const formattedProjects: (IProjectPart[])[] = [];
+        let currentBatch: IProjectPart[] = [];
 
-    if(temp.length > 0) {
-        output.push(temp);
-    }
-    return output;
+        const pushBatchToOutput = () => {
+            if (currentBatch.length > 0) {
+                formattedProjects.push(currentBatch);
+                currentBatch = [];
+            }
+        };
+
+        if(data.projects) {
+            data.projects.forEach(project => {
+                const projectSum = {...project, part: ProjectPart.Summary}
+                const projectResp = {...project, part: ProjectPart.Responsibilities}
+                if(project.startPageBreak) {
+                    pushBatchToOutput()
+                }
+                currentBatch.push(projectSum);
+
+                if(project.middlePageBreak) {
+                    pushBatchToOutput()
+                }
+                currentBatch.push(projectResp);
+            });
+        }
+        pushBatchToOutput()
+        return formattedProjects;
     }, [data.projects])
 
     useEffect(() => {
@@ -89,7 +107,14 @@ function App() {
                 {projects.map(pages =>
                     <Page>
                         <Divider title="Projects"/>
-                        {pages.map((project)=><Project project={project}/>)}
+                        {pages.map((project)=>
+                            <>
+                            {project.part == ProjectPart.Summary ?
+                                <ProjectSummary project={project}/> :
+                                <ProjectResponsibilities project={project}/>
+                            }
+                            </>
+                        )}
                     </Page>
                 )}
                 <Page>

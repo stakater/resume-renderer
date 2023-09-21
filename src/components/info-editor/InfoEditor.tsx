@@ -114,7 +114,7 @@ const ObjectValue = ({
           >
             {itemKey}:
           </span>
-          {!isItemValueObject ? (itemKey === 'pageBreak') ? (
+          {!isItemValueObject ? (itemKey.endsWith("PageBreak")) ? (
               <input type="checkbox" checked={itemValue} onChange={
                 (event) => onChange(event.target.checked)
               }/>): (
