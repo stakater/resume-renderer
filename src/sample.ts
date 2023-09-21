@@ -46,7 +46,10 @@ research.
   ],
   "skillSet": {
     "highlights": [
-      "Kubernetes", "Redis", "Spring"
+      {
+        name: 'Kubernatics',
+        iconUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1rfXhgf5qLtuZacQ8H5Gk1TfR7l21TQpUtwm5LXXGjw&s'
+      }
     ],
     "skills": [
       {

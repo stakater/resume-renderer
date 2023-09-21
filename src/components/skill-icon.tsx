@@ -1,16 +1,16 @@
+import { IHighlights } from "../interfaces/resume.interface";
 import Box from "./box";
-import { TValidHighlight } from '../interfaces/resume.interface';
 
 const iconPath = process.env.PUBLIC_URL + "skillset/"
-const SkillIcon = ({highlight}: {highlight: TValidHighlight}) => {
+const SkillIcon = ({highlight}: {highlight: IHighlights}) => {
     return (
          <Box display="column" alignItems="flex-end" width="16%" textAlign="center">
             <Box>
                 <img alt="" height={56}
-                    src={iconPath + highlight.toLowerCase().replace(/\s/g, '') + ".png" }
+                    src={highlight.iconUrl }
                 />
             </Box>
-            <Box><b>{highlight}</b></Box>
+            <Box><b>{highlight.name}</b></Box>
         </Box>
     );
 };

@@ -67,10 +67,14 @@ export interface IReference {
     reference: string;
 }
 
-export type TValidHighlight = "Kubernetes" | "Redis" | "Spring"
 export interface ISkillSet {
-    highlights: TValidHighlight[];
+    highlights: IHighlights[];
     skills:     ISkill[];
+}
+
+export interface IHighlights {
+    name: string,
+    iconUrl: string,
 }
 
 export interface ISkill {
