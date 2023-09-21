@@ -4,8 +4,7 @@ export const testData: IResume = {
   "summary": {
     name: "Moatter",
     title: "Digial designer",
-    description:`
-Moatter is a passionate digital designer with more than 4 years of experience in the design
+    description:`Moatter is a passionate digital designer with more than 4 years of experience in the design
 industry and a deep understanding of branding, social media marketing design, user
 experience,
 and user interface design. She has been taking on different design roles for the last four
@@ -112,14 +111,12 @@ research.
       "company": "Scania",
       "startDate": "Mar 2020",
       "endDate": "Nov 2022",
-      "description": `
-As a founding engineer, designed and implemented the majority of infrastructure
+      "description": `As a founding engineer, designed and implemented the majority of infrastructure
 and services, focusing on efficient data pipelines, deterministic builds, and CI/CD
 workflows. Collaborated closely with analytics and technical teams, ensuring smooth
 operation and integrations
       `,
-      "responsibilities": [
-        "Designing a robust CI/CD workflow with GitHub Actions, Terraform, and Nix, utilizing Git for version control.",
+      "responsibilities": ["Designing a robust CI/CD workflow with GitHub Actions, Terraform, and Nix, utilizing Git for version control.",
         "Building a routing layer using the Cloudflare serverless stack",
         "Architecting efficient data pipelines on Google Cloud using TypeScript, Go, Elixir, and Python."
       ],
