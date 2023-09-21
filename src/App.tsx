@@ -36,7 +36,6 @@ function App() {
     if(temp.length > 0) {
         output.push(temp);
     }
-    console.log(output)
     return output;
     }, [data.projects])
 
