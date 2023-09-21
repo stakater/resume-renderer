@@ -6,7 +6,7 @@ interface IDividerProps {
 }
 const Divider = ({title}: IDividerProps) => {
     return (
-        <Box position="relative" overflow="hidden" marginTop="10mm">
+        <Box position="relative" overflow="hidden">
             <Box>
                 <svg className="vL6BBg" viewBox="0 0 213.33333333333331 9.472489553669618">
                     <path className="SQ2ADw _682gpw"
