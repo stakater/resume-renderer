@@ -6,7 +6,7 @@ const Header = () => {
         <Box display="flex" justifyContent="space-between" alignItems="center" className="header">
             {/* Logo aligned to the far left */}
             <Box display="inline-flex">
-                <img height={56} src={process.env.PUBLIC_URL + "/logo.svg"} alt="Logo"/>
+                <img height={30} src={process.env.PUBLIC_URL + "/logo.svg"} alt="Logo"/>
             </Box>
 
             {/* Group for address and phone number aligned to the far right */}

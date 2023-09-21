@@ -14,7 +14,7 @@ const Skills = ({skillSet}: {
                     skillSet.highlights.map(highlight => <SkillIcon highlight={highlight}/> )
                 }
             </Box>
-            <Box display="flex" alignItems="stretch" justifyItems="space-evenly" padding="10mm" gridGap="5mm">
+            <Box display="flex" alignItems="stretch" justifyItems="space-evenly" paddingInline="10mm" paddingBlock="3mm" gridGap="5mm">
                 <Box display="flex" flexDirection="column" width="50%" gridGap="1mm">
                     {
                         skillSet.skills.filter((_,i) => i % 2 === 0).map(skill => (

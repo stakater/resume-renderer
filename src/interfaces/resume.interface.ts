@@ -54,6 +54,7 @@ export interface IProject {
     middlePageBreak?: boolean;
     name:             string;
     company:          string;
+    companyLogoUrl?:   string;
     startDate:        string;
     endDate:          string;
     description:      string;

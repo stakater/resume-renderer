@@ -106,7 +106,7 @@ function App() {
                 </Page>
                 {projects.map(pages =>
                     <Page>
-                        <Divider title="Projects"/>
+                        <Divider title="Projects"  marginTop='0mm'/>
                         {pages.map((project)=>
                             <>
                             {project.part === ProjectPart.Summary ?
@@ -118,7 +118,7 @@ function App() {
                     </Page>
                 )}
                 <Page>
-                    <Divider title="Employments"/>
+                    <Divider title="Employments" marginTop='0mm'/>
                     {data.employments.map(employment => <Employment employment={employment}/>)}
                 </Page>
                 </div>

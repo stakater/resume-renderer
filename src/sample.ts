@@ -89,6 +89,7 @@ research.
     {
       "startPageBreak": false,
       "middlePageBreak": false,
+      "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW2K2fryfu6fzQCLocMYURAFJ6vqJAHKUMzWkJgO-P&s",
       "name": "Headlight Engineer Project",
       "company": "Volvo",
       "startDate": "Jan 2019",

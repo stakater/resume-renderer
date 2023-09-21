@@ -3,9 +3,9 @@ import { IEmployment} from "../interfaces/resume.interface";
 
 const Employment = ({employment}: {employment: IEmployment}) => {
     return (
-        <Box margin = "5mm" marginLeft="15mm" marginRight="15mm">
+        <Box marginInline="10mm">
             <Box>
-                <h4>{employment.position} - {employment.company}<br/>{employment.location}<br/>{employment.startDate} → {employment.endDate}</h4>
+                <h3>{employment.position} - {employment.company}<br/>{employment.location}<br/>{employment.startDate} → {employment.endDate}</h3>
             </Box>
             <Box>
                 <ul>

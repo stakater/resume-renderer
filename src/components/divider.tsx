@@ -2,11 +2,12 @@ import React from 'react';
 import Box from "./box";
 
 interface IDividerProps {
-    title: string
+    title: string,
+    marginTop?: string,
 }
-const Divider = ({title}: IDividerProps) => {
+const Divider = ({title, marginTop}: IDividerProps) => {
     return (
-        <Box position="relative" overflow="hidden">
+        <Box position="relative" overflow="hidden" marginTop={marginTop? marginTop: '5mm'}>
             <Box>
                 <svg className="vL6BBg" viewBox="0 0 213.33333333333331 9.472489553669618">
                     <path className="SQ2ADw _682gpw"

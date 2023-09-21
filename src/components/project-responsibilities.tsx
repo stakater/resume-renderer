@@ -4,7 +4,7 @@ import { IProject } from "../interfaces/resume.interface";
 
 const ProjectResponsibilities = ({project}: {project: IProject}) => {
     return (
-        <Box margin = "5mm" marginLeft="15mm" marginRight="15mm">
+        <Box marginInline="10mm">
             <Box>
                 <h4>Responsibilities</h4>
                 <ul>
