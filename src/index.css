@@ -4,7 +4,7 @@
   body * {
     visibility: hidden;
     -webkit-print-color-adjust: exact;
-            color-adjust: exact; /* Non-Webkit Browsers */
+    color-adjust: exact; /* Non-Webkit Browsers */
   }
   #printableDiv, #printableDiv * {
     visibility: visible;
@@ -17,7 +17,7 @@
 }
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;font-size: 12pt;
+  font-family: 'Montserrat', sans-serif;font-size: 9pt;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

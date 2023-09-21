@@ -15,7 +15,7 @@ const Summary = ({summary}: {summary: ISummary}) => {
             {/* Second Box */}
             <Box width="75%" paddingLeft="10mm" paddingRight="10mm">
                 <Box textAlign="right">
-                    <h3 className="clear-y">{summary.name}</h3>
+                    <h2 className="clear-y">{summary.name}</h2>
                     <h6 className="clear-y">{summary.title}</h6>
                 </Box>
 

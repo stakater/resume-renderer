@@ -5,11 +5,8 @@ import { IProject } from "../interfaces/resume.interface";
 const Project = ({project}: {project: IProject}) => {
     return (
         <Box margin = "5mm" marginLeft="15mm" marginRight="15mm">
-            <Box padding='0mm' textAlign='left'>
-                <h2>{project.company}</h2>
-            </Box>
             <Box>
-                <h4>{project.name}<br/>{project.startDate} → {project.endDate}</h4>
+                <h3>{project.name} - {project.company} <br/>{project.startDate} → {project.endDate}</h3>
             </Box>
             <Box>
                 {project.description}
