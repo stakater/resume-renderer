@@ -24,7 +24,7 @@ interface IProjectPart extends IProject {
 }
 
 function App() {
-    const [md, setMD] = useState<string>("");
+    const [, setMD] = useState<string>("");
     const [data, setData] = useState<IResume>(testData);
     const [showYaml, setShowYaml] = useState<boolean>(false);
     const projects = useMemo(() => {
@@ -109,7 +109,7 @@ function App() {
                         <Divider title="Projects"/>
                         {pages.map((project)=>
                             <>
-                            {project.part == ProjectPart.Summary ?
+                            {project.part === ProjectPart.Summary ?
                                 <ProjectSummary project={project}/> :
                                 <ProjectResponsibilities project={project}/>
                             }

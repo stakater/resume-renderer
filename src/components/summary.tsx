@@ -1,15 +1,12 @@
-import { CastForEducation } from "@material-ui/icons";
 import Box from "./box";
 import { ISummary } from "../interfaces/resume.interface";
-
-
 
 const Summary = ({summary}: {summary: ISummary}) => {
     return (
         <Box display="flex" width="100%" paddingTop="10mm">
             {/* First Box */}
             <Box display="inline-block" width="25%" paddingLeft="10mm" paddingRight="5mm">
-                <img width="100%" src={process.env.PUBLIC_URL + "/persona-icon.png"}/>
+                <img alt="" width="100%" src={process.env.PUBLIC_URL + "/persona-icon.png"}/>
             </Box>
 
             {/* Second Box */}

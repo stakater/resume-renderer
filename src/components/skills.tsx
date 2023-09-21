@@ -2,7 +2,7 @@ import React from 'react';
 import Box from "./box";
 import SkillItem from "./skill-item";
 import SkillIcon from "./skill-icon";
-import { ISkill, ISkillSet } from '../interfaces/resume.interface';
+import { ISkillSet } from '../interfaces/resume.interface';
 
 const Skills = ({skillSet}: {
     skillSet: ISkillSet
@@ -17,7 +17,7 @@ const Skills = ({skillSet}: {
             <Box display="flex" alignItems="stretch" justifyItems="space-evenly" padding="10mm" gridGap="5mm">
                 <Box display="flex" flexDirection="column" width="50%" gridGap="1mm">
                     {
-                        skillSet.skills.filter((_,i) => i % 2 == 0).map(skill => (
+                        skillSet.skills.filter((_,i) => i % 2 === 0).map(skill => (
                             <SkillItem key={skill.name} title={skill.name}
                                items={skill.keywords}/>
                         ))
@@ -26,7 +26,7 @@ const Skills = ({skillSet}: {
 
                 <Box display="flex" flexDirection="column" width="50%" gridGap="1mm">
                     {
-                        skillSet.skills.filter((_,i) => i % 2 == 1).map(skill => (
+                        skillSet.skills.filter((_,i) => i % 2 === 1).map(skill => (
                             <SkillItem key={skill.name} title={skill.name}
                                items={skill.keywords}/>
                         ))

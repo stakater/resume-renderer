@@ -3,7 +3,7 @@ import './InfoEditor.css';
 import {KeyboardArrowDown, KeyboardArrowRight } from '@material-ui/icons';
 
 const isObject = (value: any) =>
-  (typeof value === "object" && value !== null && value != undefined) ||
+  (typeof value === "object" && value !== null && value !== undefined) ||
   Array.isArray(value);
 
 const Items = ({ data, level, counterObj, parentKey, onChange }: any) => {
