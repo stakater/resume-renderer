@@ -50,7 +50,8 @@ export interface IEmployment {
 }
 
 export interface IProject {
-    pageBreak?:       boolean;
+    startPageBreak?:  boolean;
+    middlePageBreak?: boolean;
     name:             string;
     company:          string;
     startDate:        string;

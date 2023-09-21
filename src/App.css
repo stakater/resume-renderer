@@ -24,6 +24,14 @@
   color: #FFFFFFFF
 }
 
+ul {
+  list-style-type:square;
+}
+
+li + li {
+  margin-top: 5px;
+}
+
 h1 {
   font-size: 28pt;
   font-weight: bolder;
@@ -40,6 +48,7 @@ h3 {
 h4 {
   font-size: 12pt;
   font-weight: bolder;
+  margin-top: 0.8em;
   margin-bottom: 0.2em;
 }
 h5 {

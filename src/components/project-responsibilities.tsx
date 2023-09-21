@@ -2,15 +2,9 @@ import React from 'react';
 import Box from "./box";
 import { IProject } from "../interfaces/resume.interface";
 
-const Project = ({project}: {project: IProject}) => {
+const ProjectResponsibilities = ({project}: {project: IProject}) => {
     return (
         <Box margin = "5mm" marginLeft="15mm" marginRight="15mm">
-            <Box>
-                <h3>{project.name} - {project.company} <br/>{project.startDate} → {project.endDate}</h3>
-            </Box>
-            <Box>
-                {project.description}
-            </Box>
             <Box>
                 <h4>Responsibilities</h4>
                 <ul>
@@ -25,4 +19,4 @@ const Project = ({project}: {project: IProject}) => {
     );
 };
 
-export default Project;
+export default ProjectResponsibilities;
