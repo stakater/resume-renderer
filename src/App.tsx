@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import './App.css';
 import Page from "./components/page";
 import Divider from "./components/divider";
@@ -17,6 +17,28 @@ function App() {
     const [md, setMD] = useState<string>("");
     const [data, setData] = useState<IResume>(testData);
     const [showYaml, setShowYaml] = useState<boolean>(false);
+    const projects = useMemo(() => {
+        const output = [];
+        let temp: any[] = [];
+        if(data.projects)
+        data.projects.forEach(item => {
+            if(item.pageBreak) {
+                if(temp.length > 0) {
+                    output.push(temp);
+                    temp = [];
+                }
+                output.push([item]);
+            } else {
+                temp.push(item);
+            }
+        });
+
+    if(temp.length > 0) {
+        output.push(temp);
+    }
+    console.log(output)
+    return output;
+    }, [data.projects])
 
     useEffect(() => {
         fetch(example)
@@ -44,12 +66,12 @@ function App() {
             display: 'flex',
             gap: 20
         }}>
-            {/* <DocumentContainer documentPath={example}/>
-            <div dangerouslySetInnerHTML={{__html: marked.parse(md)}}/> */}
             <div style={{
                 background: '#fff',
                 padding: 20,
-                flexGrow: 1
+                flexGrow: 1,
+                height: '100vh',
+                overflowX: 'auto',
             }}>
                 <button onClick={() => setShowYaml(pre => !pre)}>Show {showYaml? 'Editor view': 'Yaml View'}</button>
                 {!showYaml && <InfoEditor data={data} setData={setData}></InfoEditor>}
@@ -65,11 +87,10 @@ function App() {
                     <Divider title="Skillset"/>
                     <Skills skillSet={data.skillSet}/>
                 </Page>
-
-                {data.projects.map(project =>
+                {projects.map(pages =>
                     <Page>
                         <Divider title="Projects"/>
-                        <Project project={project}/>)
+                        {pages.map((project)=><Project project={project}/>)}
                     </Page>
                 )}
                 <Page>

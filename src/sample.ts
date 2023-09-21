@@ -87,6 +87,7 @@ research.
   ],
   "projects": [
     {
+      "pageBreak": false,
       "name": "Headlight Engineer Project",
       "company": "Volvo",
       "startDate": "Jan 2019",
@@ -100,6 +101,7 @@ research.
       ]
     },
     {
+      "pageBreak": false,
       "name": "Wheel Engineer Project",
       "company": "Scania",
       "startDate": "Mar 2020",

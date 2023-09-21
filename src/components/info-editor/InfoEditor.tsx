@@ -2,29 +2,12 @@ import { useState } from "react";
 import './InfoEditor.css';
 import {KeyboardArrowDown, KeyboardArrowRight } from '@material-ui/icons';
 
-const isJSONString = (str: string) => {
-  try {
-    JSON.parse(str);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
-
 const isObject = (value: any) =>
   (typeof value === "object" && value !== null && value != undefined) ||
-  Array.isArray(value) ||
-  isJSONString(value);
+  Array.isArray(value);
 
 const Items = ({ data, level, counterObj, parentKey, onChange }: any) => {
   let parsedData = data;
-  try {
-    if (typeof data === "string") {
-      parsedData = JSON.parse(data);
-    }
-  } catch (e) {
-    // not a json string;
-  }
   return (
     <>
       <div className="position-relative element-box">
@@ -51,7 +34,7 @@ const Items = ({ data, level, counterObj, parentKey, onChange }: any) => {
               level={level}
               counterObj={counterObj}
               parentKey={parentKey}
-              onChange={(newVal: any) => {
+              onChange={(newVal: any, keyTemp: string | null = null) => {
                 const newData = [...data];
                 newData[i] = newVal;
                 onChange(newData);
@@ -131,7 +114,10 @@ const ObjectValue = ({
           >
             {itemKey}:
           </span>
-          {!isItemValueObject ? (
+          {!isItemValueObject ? (itemKey === 'pageBreak') ? (
+              <input type="checkbox" checked={itemValue} onChange={
+                (event) => onChange(event.target.checked)
+              }/>): (
             <textarea  
               value={itemValue || ''} 
               onChange={e => {
@@ -194,13 +180,7 @@ export default function InfoEditor({ data, setData }: any) {
 
         // If the value is another object or array, traverse deeper
         if (isObject(obj[key])) {
-          let parsedString = obj[key];
-          try {
-            parsedString = JSON.parse(obj[key]);
-          } catch (error) {
-            // Not a stringified JSON, so just continue
-          }
-          traverse(parsedString, newKey);
+          traverse(obj[key], newKey);
         }
       }
     }
