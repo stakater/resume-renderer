@@ -13,8 +13,8 @@ const Header = () => {
             <Box display="flex" alignItems="start" fontSize="0.7em" lineHeight="1.5">
                 <Box flexDirection="column" marginRight={20}>
                     <Box><b>Address</b></Box>
-                    <Box>Mäster Samuelsgatan 36,</Box>
-                    <Box>111 57 Stockholm, Sweden</Box>
+                    <Box>David Bagares Gata 26A,</Box>
+                    <Box>111 38 Stockholm, Sweden</Box>
                 </Box>
 
                 <Box flexDirection="column">
