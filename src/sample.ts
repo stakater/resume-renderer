@@ -1,5 +1,4 @@
 import { IResume } from "./interfaces/resume.interface";
-import Employment from './components/employment';
 
 export const testData: IResume = {
   certificationsHeading: 'Certification',
