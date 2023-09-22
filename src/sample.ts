@@ -1,6 +1,11 @@
 import { IResume } from "./interfaces/resume.interface";
 
 export const testData: IResume = {
+  certificationsHeading: 'Certification',
+  educationHeading: 'Education',
+  employmentsHeading: 'Employments',
+  projectsHeading: 'Projects',
+  skillSetHeading: 'Skillset',
   "summary": {
     name: "Moatter",
     title: "Digial designer",
