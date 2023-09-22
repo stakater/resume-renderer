@@ -1,7 +1,6 @@
 import { IHighlights } from "../interfaces/resume.interface";
 import Box from "./box";
 
-const iconPath = process.env.PUBLIC_URL + "skillset/"
 const SkillIcon = ({highlight}: {highlight: IHighlights}) => {
     return (
          <Box display="column" alignItems="flex-end" width="16%" textAlign="center">
