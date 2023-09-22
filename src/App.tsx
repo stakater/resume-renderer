@@ -13,6 +13,7 @@ import { testData } from './sample';
 import { IResume, IProject } from './interfaces/resume.interface';
 import YAMLEditor from './components/yaml-editor/YamlEditor';
 import InfoEditor from './components/info-editor/InfoEditor';
+import Certifications from './components/certifications';
 
 const ProjectPart = {
 	Summary: 0,
@@ -101,8 +102,13 @@ function App() {
                 <div id="printableDiv">
                 <Page>
                     <Summary summary={data.summary}/>
-                    <Divider title="Skillset"/>
-                    <Skills skillSet={data.skillSet}/>
+                    {data.skillSet && <><Divider title="Skillset"/>
+                    <Skills skillSet={data.skillSet}/> </>}
+                    {data.certifications?.length > 0  && 
+                    <><Divider title="Certifications"/>
+                    <Certifications certifications={data.certifications}></Certifications></>
+                    }
+                    
                 </Page>
                 {projects.map(pages =>
                     <Page>
@@ -117,10 +123,14 @@ function App() {
                         )}
                     </Page>
                 )}
-                <Page>
+                {
+                    data.employments?.length > 0 && (
+                        <><Page>
                     <Divider title="Employments" marginTop='0mm'/>
                     {data.employments.map(employment => <Employment employment={employment}/>)}
-                </Page>
+                </Page></>
+                    )
+                }
                 </div>
             </div>
         </div>
