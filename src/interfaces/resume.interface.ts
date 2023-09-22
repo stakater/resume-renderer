@@ -1,4 +1,9 @@
 export interface IResume {
+    certificationsHeading?: string;
+    skillSetHeading?: string;
+    educationHeading?: string;
+    employmentsHeading?: string;
+    projectsHeading?: string;
     summary:     ISummary;
     employments: IEmployment[];
     education:   IEducation[];

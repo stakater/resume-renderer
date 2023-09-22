@@ -101,18 +101,18 @@ function App() {
             }}>
                 <div id="printableDiv">
                 <Page>
-                    <Summary summary={data.summary}/>
-                    {data.skillSet && <><Divider title="Skillset"/>
+                    <Summary summary={data.summary} educationHeading={data.educationHeading}/>
+                    {data.skillSet && <><Divider title={data.skillSetHeading || 'Skillset'}/>
                     <Skills skillSet={data.skillSet}/> </>}
                     {data.certifications?.length > 0  && 
-                    <><Divider title="Certifications"/>
+                    <><Divider title={data.certificationsHeading || 'Certifications'}/>
                     <Certifications certifications={data.certifications}></Certifications></>
                     }
                     
                 </Page>
                 {projects.map(pages =>
                     <Page>
-                        <Divider title="Projects"  marginTop='0mm'/>
+                        <Divider title={data.projectsHeading || 'Projects'} marginTop='0mm'/>
                         {pages.map((project)=>
                             <>
                             {project.part === ProjectPart.Summary ?
@@ -126,7 +126,7 @@ function App() {
                 {
                     data.employments?.length > 0 && (
                         <><Page>
-                    <Divider title="Employments" marginTop='0mm'/>
+                    <Divider title={data.employmentsHeading || 'Employments'} marginTop='0mm'/>
                     {data.employments.map(employment => <Employment employment={employment}/>)}
                 </Page></>
                     )

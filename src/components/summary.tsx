@@ -1,7 +1,7 @@
 import Box from "./box";
 import { ISummary } from "../interfaces/resume.interface";
 
-const Summary = ({summary}: {summary: ISummary}) => {
+const Summary = ({summary, educationHeading}: {summary: ISummary, educationHeading: string | undefined}) => {
     return (
         <Box display="flex" width="100%" paddingTop="10mm">
             {/* First Box */}
@@ -22,7 +22,7 @@ const Summary = ({summary}: {summary: ISummary}) => {
                     </i>
                 </Box>
                 {summary.education?.length >0 && (<Box paddingTop="5mm">
-                    <Box><b>Education:</b></Box>
+                    <Box><b>{educationHeading || 'Education'}:</b></Box>
                     <Box>{summary.education.map(edu => <div>{edu}</div>)}</Box>
                 </Box>)}
             </Box>
