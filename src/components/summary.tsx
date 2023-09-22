@@ -21,10 +21,10 @@ const Summary = ({summary}: {summary: ISummary}) => {
                     {summary.description}
                     </i>
                 </Box>
-                <Box paddingTop="5mm">
+                {summary.education?.length >0 && (<Box paddingTop="5mm">
                     <Box><b>Education:</b></Box>
                     <Box>{summary.education.map(edu => <div>{edu}</div>)}</Box>
-                </Box>
+                </Box>)}
             </Box>
         </Box>
   );
