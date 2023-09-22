@@ -97,7 +97,7 @@ research.
     {
       "startPageBreak": false,
       "middlePageBreak": false,
-      "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW2K2fryfu6fzQCLocMYURAFJ6vqJAHKUMzWkJgO-P&s",
+      "companyLogoUrl": "https://chargebase.co.uk/wp-content/uploads/2020/04/volvo.png",
       "name": "Headlight Engineer Project",
       "company": "Volvo",
       "startDate": "Jan 2019",
@@ -114,6 +114,7 @@ research.
       "startPageBreak": false,
       "middlePageBreak": false,
       "name": "Wheel Engineer Project",
+      "companyLogoUrl": "https://swedspot.com/wp-content/uploads/2021/12/scania-5-logo-png-transparent.png",
       "company": "Scania",
       "startDate": "Mar 2020",
       "endDate": "Nov 2022",
