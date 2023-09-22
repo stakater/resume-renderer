@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from "./box";
-import {STAKATER_COLORS} from "./colors.";
+import {STAKATER_COLORS} from "./colors";
 
 interface ISkillItemProps {
     title: string;

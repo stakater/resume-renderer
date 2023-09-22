@@ -17,6 +17,7 @@ function Certificate({
           style={{
             marginLeft: "2mm",
           }}
+          className="link"
           href={certificate.link}
         >
           {certificate.linkDisplayText

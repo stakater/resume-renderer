@@ -3,7 +3,7 @@
     align-items: stretch;
     padding-inline: 10mm;
   }
-  a {
+  .link {
     color: rgba(36, 36, 243, 0.89);
     text-decoration: underline;
     font-size: 12px;
