@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/stakater.github.io/resume-renderer/static/css/main.1ed8d79a.css",
-    "main.js": "/stakater.github.io/resume-renderer/static/js/main.456961ff.js",
-    "static/js/787.82512ad4.chunk.js": "/stakater.github.io/resume-renderer/static/js/787.82512ad4.chunk.js",
-    "index.html": "/stakater.github.io/resume-renderer/index.html",
-    "static/media/Example.md": "/stakater.github.io/resume-renderer/static/media/Example.0abfa4355678e02583f9.md",
-    "main.1ed8d79a.css.map": "/stakater.github.io/resume-renderer/static/css/main.1ed8d79a.css.map",
-    "main.456961ff.js.map": "/stakater.github.io/resume-renderer/static/js/main.456961ff.js.map",
-    "787.82512ad4.chunk.js.map": "/stakater.github.io/resume-renderer/static/js/787.82512ad4.chunk.js.map"
+    "main.css": "/resume-renderer/static/css/main.1ed8d79a.css",
+    "main.js": "/resume-renderer/static/js/main.b81fba60.js",
+    "static/js/787.82512ad4.chunk.js": "/resume-renderer/static/js/787.82512ad4.chunk.js",
+    "index.html": "/resume-renderer/index.html",
+    "static/media/Example.md": "/resume-renderer/static/media/Example.0abfa4355678e02583f9.md",
+    "main.1ed8d79a.css.map": "/resume-renderer/static/css/main.1ed8d79a.css.map",
+    "main.b81fba60.js.map": "/resume-renderer/static/js/main.b81fba60.js.map",
+    "787.82512ad4.chunk.js.map": "/resume-renderer/static/js/787.82512ad4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1ed8d79a.css",
-    "static/js/main.456961ff.js"
+    "static/js/main.b81fba60.js"
   ]
 }
