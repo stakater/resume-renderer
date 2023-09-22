@@ -13,6 +13,7 @@ import { testData } from './sample';
 import { IResume, IProject } from './interfaces/resume.interface';
 import YAMLEditor from './components/yaml-editor/YamlEditor';
 import InfoEditor from './components/info-editor/InfoEditor';
+import Certifications from './components/certifications';
 
 const ProjectPart = {
 	Summary: 0,
@@ -103,6 +104,8 @@ function App() {
                     <Summary summary={data.summary}/>
                     <Divider title="Skillset"/>
                     <Skills skillSet={data.skillSet}/>
+                    <Divider title="Certifications"/>
+                    <Certifications certifications={data.certifications}></Certifications>
                 </Page>
                 {projects.map(pages =>
                     <Page>

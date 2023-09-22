@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    align-items: stretch;
+    padding-inline: 10mm;
+  }
+  a {
+    color: rgba(36, 36, 243, 0.89);
+    text-decoration: underline;
+    font-size: 12px;
+  }
+  
+  .left {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  
+  .right {
+    width: 50%;
+  }
+  
+  .box {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 5px;
+    box-sizing: border-box;
+  }
+  
+  .box.full-height {
+    height: calc(200px + 2 * 20px); /* 200px for two boxes height + 2 times padding */
+  }
+  

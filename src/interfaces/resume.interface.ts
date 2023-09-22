@@ -5,6 +5,7 @@ export interface IResume {
     skillSet:    ISkillSet;
     references:  IReference[];
     projects:    IProject[];
+    certifications: ICertificate[];
 }
 
 export interface ISummary {
@@ -12,6 +13,14 @@ export interface ISummary {
     title: string;
     description: string;
     education: string[];
+}
+
+export interface ICertificate {
+    name: string;
+      link?: string;
+      organizationName?: string;
+      linkDisplayText?: string;
+      certificateId?:string;
 }
 
 export interface ILocation {

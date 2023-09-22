@@ -125,5 +125,14 @@ operation and integrations
         "Nix", "CI/CD", "Terraform", "Git", "Google Cloud",
       ],
     }
+  ],
+  certifications: [
+    {
+      name: 'Test',
+      link: 'Link',
+      linkDisplayText: 'Link text',
+      organizationName: 'Hello',
+      certificateId: 'Test'
+    }
   ]
 };
