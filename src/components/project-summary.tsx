@@ -5,7 +5,7 @@ import { IProject } from "../interfaces/resume.interface";
 
 const ProjectSummary = ({project}: {project: IProject}) => {
     return (
-        <Box marginLeft="10mm" marginRight="10mm">
+        <Box marginInline="10mm">
             <Box display="flex" alignItems="center">
                 <Box display="flex" textAlign="center" justifyContent="center"
                     width="20mm" padding="0.7mm"  height="10mm" borderRadius="5px"
