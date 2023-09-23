@@ -8,8 +8,9 @@ const Employment = ({employment}: {employment: IEmployment}) => {
                 <h3>{employment.position} - {employment.company}<br/>{employment.location}<br/>{employment.startDate} → {employment.endDate}</h3>
             </Box>
             <Box>
+                {employment.summary} 
                 <ul>
-                <li> {employment.summary} </li>
+                {employment.highlights.map(highlight => <li> {highlight} </li>)}
                 </ul>
             </Box>
         </Box>
