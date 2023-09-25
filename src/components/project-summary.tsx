@@ -16,7 +16,7 @@ const ProjectSummary = ({project}: {project: IProject}) => {
                     }
                 </Box>
                 <Box paddingLeft="2mm">
-                    <h3>{project.name} {!project.companyLogoUrl && `- ${project.company}`} <br/>{project.startDate} → {project.endDate}</h3>
+                    <h3>{`${project.name} - ${project.company}`} <br/>{project.startDate} → {project.endDate}</h3>
                 </Box>
             </Box>
             <Box>
