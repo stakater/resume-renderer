@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# Resume Renderer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+
+This is a React-based application designed to generate resumes from YAML files. Features include a built-in real-time editor for both YAML content and individual resume fields.
+
+## Prerequisites
+
+- Node.js
+- Yarn package manager
+
+## Quick Installation
+
+Run the following commands to clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/stakater/resume-renderer.git
+cd resume-renderer
+yarn install
+```
+
+## How to Use
+
+1. **Edit a Resume**: Use the real-time editor to edit YAML content and individual fields.
+1. **Export a Resume**: To export a resume as a PDF, simply use the Ctrl+P print prompt to select "Print to PDF."
+1. **Download the YAML**: Download your resume in YAML format.
+1. **Uploading to GitHub**: Upload the YAML to [this GitHub repo](https://github.com/stakater/resumes).
+1. **Editing an Existing Resume**: To edit, download the YAML from GitHub and import it into the application.
+
+### Page Breaks in Projects
+
+Page breaks do not happen automatically in the Projects section. Use the fields `startPageBreak` or `middlePageBreak` to insert a page break either before the project or in the middle (between description and responsibilities).
 
 ## Available Scripts
 
-In the project directory, you can run:
+### `yarn start`
 
-### `npm start`
+Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it. The page reloads if you make edits.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `yarn test`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Runs the test runner in interactive watch mode. More info [here](https://facebook.github.io/create-react-app/docs/running-tests).
 
-### `npm test`
+### `yarn build`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Builds the app for production to the `build` folder. The build is minified and ready for deployment.
