@@ -1,4 +1,5 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {ReactElement, useEffect, useMemo, useState} from 'react';
+import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import './App.css';
 import Page from "./components/page";
 import Divider from "./components/divider";
@@ -24,7 +25,7 @@ interface IProjectPart extends IProject {
   part: number;
 }
 
-function App() {
+const App = () => {
     const [, setMD] = useState<string>("");
     const [data, setData] = useState<IResume>(testData);
     const [showYaml, setShowYaml] = useState<boolean>(false);
@@ -78,7 +79,6 @@ function App() {
     const yamlChange = (newData: any)=> {
         setData({...newData});
     }
-
     return (
         <div style={{
             display: 'flex',
@@ -99,7 +99,26 @@ function App() {
                 height: '100vh',
                 overflowX: 'auto'
             }}>
-                <div id="printableDiv">
+                {createPage(data, projects)}
+            </div>
+        </div>
+    );
+}
+const ErrorFallback = () => {
+  const { resetBoundary } = useErrorBoundary();
+
+  return (
+    <div role="alert" id="printableDiv" style={{padding: "10mm"}}>
+      <p>Something went wrong! Check console for errors.</p>
+      <button onClick={resetBoundary}>Try again</button>
+    </div>
+  );
+}
+
+const createPage = (data: IResume, projects: (IProjectPart[])[]) => {
+    return (
+        <div id="printableDiv">
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <Page>
                     <Summary summary={data.summary} educationHeading={data.educationHeading}/>
                     {data.skillSet && <><Divider title={data.skillSetHeading || 'Skillset'}/>
@@ -125,16 +144,16 @@ function App() {
                 )}
                 {
                     data.employments?.length > 0 && (
-                        <><Page>
-                    <Divider title={data.employmentsHeading || 'Employments'} marginTop='0mm'/>
-                    {data.employments.map(employment => <Employment employment={employment}/>)}
-                </Page></>
+                        <>
+                            <Page>
+                                <Divider title={data.employmentsHeading || 'Employments'} marginTop='0mm'/>
+                                {data.employments.map(employment => <Employment employment={employment}/>)}
+                            </Page>
+                        </>
                     )
-                }
-                </div>
-            </div>
+                };
+            </ErrorBoundary>
         </div>
-    );
+    )
 }
-
 export default App;
