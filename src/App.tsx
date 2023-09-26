@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect, useMemo, useState} from 'react';
+import { useEffect, useMemo, useState} from 'react';
 import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
 import './App.css';
 import Page from "./components/page";
