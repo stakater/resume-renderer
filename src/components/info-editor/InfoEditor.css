@@ -64,10 +64,10 @@
 }
 .delete-btn {
   display: none;
-  position: absolute;
-  right: -18px;
+  position: relative;
+  float: right;
   z-index: 10;
-  top: -9px;
+  top: 10px;
   background-color: rgb(253, 82, 82);
   border: 1px solid rgb(253, 82, 82);
   color: #ffff;

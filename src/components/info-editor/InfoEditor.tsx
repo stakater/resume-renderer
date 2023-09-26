@@ -22,11 +22,15 @@ const Items = ({ data, level, counterObj, parentKey, onChange }: any) => {
           Array.isArray(parsedData)?<>
           {parsedData.map((ele, i) => (
           <div className="array-box">
-            <button className="delete-btn btn" onClick={() => {
-                const newData = [...data];
-                newData.splice(i, 1);
-                onChange(newData);
-              }}>X</button>
+            {
+              parsedData.length > 1 ? (
+                <button className="delete-btn btn" onClick={() => {
+                  const newData = [...data];
+                  newData.splice(i, 1);
+                  onChange(newData);
+                }}>Delete</button>
+              ) : ""
+            }
           <ObjectValue
               key={i}
               itemKey={i.toString()}
