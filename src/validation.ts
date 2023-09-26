@@ -1,11 +1,11 @@
 import { IResume } from "./interfaces/resume.interface";
 
-export const testData: IResume = {
-  certificationsHeading: 'Certification',
-  educationHeading: 'Education',
-  employmentsHeading: 'Employments',
-  projectsHeading: 'Projects',
-  skillSetHeading: 'Skillset',
+export const validationData: IResume = {
+  certificationsHeading: '',
+  educationHeading: '',
+  employmentsHeading: '',
+  projectsHeading: '',
+  skillSetHeading: '',
   "summary": {
     name: "Moatter",
     title: "Digial designer",
@@ -135,10 +135,10 @@ operation and integrations
   certifications: [
     {
       name: 'Test',
-      link: 'Link',
-      linkDisplayText: 'Link text',
-      organizationName: 'Hello',
-      certificateId: 'Test'
+      link: '',
+      linkDisplayText: '',
+      organizationName: '',
+      certificateId: ''
     }
   ]
 };

@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import AceEditor from "react-ace";
+import { validationData } from '../../validation';
 import "ace-builds/src-noconflict/mode-yaml";
 import "ace-builds/src-noconflict/theme-github";
 import yaml from "js-yaml";
 
-
-
 const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
   const [yamlText, setYamlText] = useState<string>(yaml.dump(initialJSON));
-  const [originalKeys, ] = useState<string[]>(Object.keys(initialJSON));
   const [error, setError] = useState<string | null>(null);
 
   const handleFileUpload = (event: any) => {
@@ -23,16 +21,36 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
     }
   };
 
+  const checkContainsKeys = (input: any, validationInput: any, searchKey: string) => {
+    // If input type is a string, number, etc (not a object), skip it
+    if (typeof(validationInput) !== "object")
+      return
+    Object.keys(validationInput)
+        // Each of these keys should exist in the input
+        .map(key => {
+          // If property in input is a list, each element must be checked
+          if (Array.isArray(input[key])) {
+            input[key].forEach( (subInput: any, index: number) =>
+              checkContainsKeys(subInput, validationInput[key][0], `${key}-${index}`)
+            )
+          // Recursively check properties in property(object) of key
+          } else if (typeof(input[key]) === "object") {
+            checkContainsKeys(input[key], validationInput[key], key)
+          }
+          return key
+        })
+        .filter(key => typeof(input[key]) === "undefined")
+        .forEach(key => {
+          throw new Error(`Property "${searchKey}" is missing: "${key}"`)
+        });
+  }
+
   const handleEditorChange = (newYamlText: string) => {
     setYamlText(newYamlText);
     try {
       const newJsonData = yaml.load(newYamlText);
       if (newJsonData && typeof newJsonData === 'object') {
-        const newKeys = Object.keys(newJsonData);
-
-        if (!newKeys.every((key) => originalKeys.includes(key))) {
-          throw new Error("Keys cannot be edited!");
-        }
+        checkContainsKeys(newJsonData, validationData, "root level")
         setError(null);
         yamlChange(newJsonData);
       } else {
