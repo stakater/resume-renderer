@@ -54,6 +54,7 @@ export interface IEducation {
 }
 
 export interface IEmployment {
+    startPageBreak:   boolean;
     company:    string;
     position:   string;
     location:   string;
