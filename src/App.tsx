@@ -10,7 +10,7 @@ import ProjectResponsibilities from "./components/project-responsibilities";
 import Employment from "./components/employment";
 import {marked} from 'marked';
 import example from "./Example.md";
-import { testData } from './sample';
+import { validationData } from './validation';
 import { IResume, IProject } from './interfaces/resume.interface';
 import YAMLEditor from './components/yaml-editor/YamlEditor';
 import InfoEditor from './components/info-editor/InfoEditor';
@@ -27,7 +27,7 @@ interface IProjectPart extends IProject {
 
 const App = () => {
     const [, setMD] = useState<string>("");
-    const [data, setData] = useState<IResume>(testData);
+    const [data, setData] = useState<IResume>(validationData);
     const [showYaml, setShowYaml] = useState<boolean>(false);
     const projects = useMemo(() => {
         const formattedProjects: (IProjectPart[])[] = [];

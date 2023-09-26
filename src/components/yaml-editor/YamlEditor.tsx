@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import AceEditor from "react-ace";
+import { validationData } from '../../validation';
 import "ace-builds/src-noconflict/mode-yaml";
 import "ace-builds/src-noconflict/theme-github";
 import yaml from "js-yaml";
 
-
-
 const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
   const [yamlText, setYamlText] = useState<string>(yaml.dump(initialJSON));
-  const [originalKeys, ] = useState<string[]>(Object.keys(initialJSON));
   const [error, setError] = useState<string | null>(null);
 
   const handleFileUpload = (event: any) => {
