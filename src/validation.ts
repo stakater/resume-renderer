@@ -23,6 +23,7 @@ research.
 },
   "employments": [
     {
+      "startPageBreak": false,
       "company": "Nortical",
       "position": "Cloud Engineer",
       "location": "Gothenborg",

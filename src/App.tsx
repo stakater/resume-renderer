@@ -11,7 +11,7 @@ import Employment from "./components/employment";
 import {marked} from 'marked';
 import example from "./Example.md";
 import { validationData } from './validation';
-import { IResume, IProject } from './interfaces/resume.interface';
+import { IResume, IProject, IEmployment } from './interfaces/resume.interface';
 import YAMLEditor from './components/yaml-editor/YamlEditor';
 import InfoEditor from './components/info-editor/InfoEditor';
 import Certifications from './components/certifications';
@@ -29,34 +29,51 @@ const App = () => {
     const [, setMD] = useState<string>("");
     const [data, setData] = useState<IResume>(validationData);
     const [showYaml, setShowYaml] = useState<boolean>(false);
+
+    const pushBatchToList = <Type,>(batch: Type[], batchList: (Type[])[]): (Type[])[] => {
+        if (batch.length > 0) {
+            return [...batchList, batch]
+        } else {
+            return batchList
+        }
+    };
+    const employments = useMemo(() => {
+        let formattedEmployments: (IEmployment[])[] = [];
+        let currentBatch: IEmployment[] = [];
+        if(data.employments) {
+            data.employments.forEach(employment => {
+                if(employment.startPageBreak) {
+                    formattedEmployments = pushBatchToList(currentBatch, formattedEmployments)
+                    currentBatch = []
+                }
+                currentBatch.push(employment);
+            });
+        }
+        return pushBatchToList(currentBatch, formattedEmployments);
+    }, [data.employments])
     const projects = useMemo(() => {
-        const formattedProjects: (IProjectPart[])[] = [];
+        let formattedProjects: (IProjectPart[])[] = [];
         let currentBatch: IProjectPart[] = [];
 
-        const pushBatchToOutput = () => {
-            if (currentBatch.length > 0) {
-                formattedProjects.push(currentBatch);
-                currentBatch = [];
-            }
-        };
 
         if(data.projects) {
             data.projects.forEach(project => {
                 const projectSum = {...project, part: ProjectPart.Summary}
                 const projectResp = {...project, part: ProjectPart.Responsibilities}
                 if(project.startPageBreak) {
-                    pushBatchToOutput()
+                    formattedProjects = pushBatchToList(currentBatch, formattedProjects)
+                    currentBatch = []
                 }
                 currentBatch.push(projectSum);
 
                 if(project.middlePageBreak) {
-                    pushBatchToOutput()
+                    formattedProjects = pushBatchToList(currentBatch, formattedProjects)
+                    currentBatch = []
                 }
                 currentBatch.push(projectResp);
             });
         }
-        pushBatchToOutput()
-        return formattedProjects;
+        return pushBatchToList(currentBatch, formattedProjects);
     }, [data.projects])
 
     useEffect(() => {
@@ -99,7 +116,7 @@ const App = () => {
                 height: '100vh',
                 overflowX: 'auto'
             }}>
-                {createPage(data, projects)}
+                {createPage(data, projects, employments)}
             </div>
         </div>
     );
@@ -115,7 +132,7 @@ const ErrorFallback = () => {
   );
 }
 
-const createPage = (data: IResume, projects: (IProjectPart[])[]) => {
+const createPage = (data: IResume, projects: (IProjectPart[])[], employments: (IEmployment[])[]) => {
     return (
         <div id="printableDiv">
             <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -142,16 +159,15 @@ const createPage = (data: IResume, projects: (IProjectPart[])[]) => {
                         )}
                     </Page>
                 )}
-                {
-                    data.employments?.length > 0 && (
-                        <>
-                            <Page>
-                                <Divider title={data.employmentsHeading || 'Employments'} marginTop='0mm'/>
-                                {data.employments.map(employment => <Employment employment={employment}/>)}
-                            </Page>
-                        </>
-                    )
-                };
+
+                {employments.map(pages =>
+                    <Page>
+                        <Divider title={data.employmentsHeading || 'Employments'} marginTop='0mm'/>
+                        {pages.map((employment)=>
+                            <Employment employment={employment}/>
+                        )}
+                    </Page>
+                )}
             </ErrorBoundary>
         </div>
     )

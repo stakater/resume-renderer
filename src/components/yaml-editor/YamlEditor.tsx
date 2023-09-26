@@ -41,7 +41,9 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
         })
         .filter(key => typeof(input[key]) === "undefined")
         .forEach(key => {
-          throw new Error(`Property "${searchKey}" is missing: "${key}"`)
+          const typing = Array.isArray(validationInput[key]) ?
+              "array" : typeof(validationInput[key])
+          throw new Error(`Property "${searchKey}" is missing: "${key}"(${typing}). If not wanted, please add empty field.`)
         });
   }
 
