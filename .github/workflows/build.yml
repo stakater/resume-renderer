@@ -1,6 +1,7 @@
 name: Build check
 
 on:
+  merge_group:
   push:
     branches-ignore:
       - master
