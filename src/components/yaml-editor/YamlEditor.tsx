@@ -41,7 +41,7 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
         })
         .filter(key => typeof(input[key]) === "undefined")
         .forEach(key => {
-          throw new Error(`Propery "${searchKey}" is missing: "${key}"`)
+          throw new Error(`Property "${searchKey}" is missing: "${key}"`)
         });
   }
 
