@@ -1,9 +1,9 @@
 export interface IResume {
-    certificationsHeading?: string;
-    skillSetHeading?: string;
-    educationHeading?: string;
-    employmentsHeading?: string;
-    projectsHeading?: string;
+    certificationsHeading: string;
+    skillSetHeading: string;
+    educationHeading: string;
+    employmentsHeading: string;
+    projectsHeading: string;
     summary:     ISummary;
     employments: IEmployment[];
     education:   IEducation[];
@@ -22,10 +22,10 @@ export interface ISummary {
 
 export interface ICertificate {
     name: string;
-      link?: string;
-      organizationName?: string;
-      linkDisplayText?: string;
-      certificateId?:string;
+    link: string;
+    organizationName: string;
+    linkDisplayText: string;
+    certificateId:string;
 }
 
 export interface ILocation {
@@ -64,11 +64,11 @@ export interface IEmployment {
 }
 
 export interface IProject {
-    startPageBreak?:  boolean;
-    middlePageBreak?: boolean;
+    startPageBreak:   boolean;
+    middlePageBreak:  boolean;
     name:             string;
     company:          string;
-    companyLogoUrl?:  string;
+    companyLogoUrl:   string;
     startDate:        string;
     endDate:          string;
     description:      string;
