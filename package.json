@@ -54,7 +54,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/dompurify": "^2.4.0",
-    "@types/jest": "^27.5.2",
+    "@types/jest": "^29.0.0",
     "@types/lodash": "^4.14.191",
     "@types/marked": "^4.0.8",
     "@types/node": "^16.18.3",
