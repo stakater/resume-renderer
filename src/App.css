@@ -30,6 +30,13 @@ font-family: 'Raleway', sans-serif;
   color: #FFFFFFFF
 }
 
+.ace_editor, .ace_editor *{
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", "Droid Sans Mono", "Consolas", monospace !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
 ul {
   list-style-type:square;
 }
