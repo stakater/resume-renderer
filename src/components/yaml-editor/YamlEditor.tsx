@@ -80,7 +80,8 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
       style={
         {
           width: '100%',
-          marginBlock: 20
+          marginBlock: 20,
+          height: 'calc(100vh - 120px)',
         }
       }
       setOptions={{ useWorker: false }}
