@@ -21,6 +21,12 @@ const ProjectPart = {
 	Responsibilities: 1,
 }
 
+interface IPagePart {
+  divider?: string;
+  project?: IProjectPart;
+  employment?: IEmployment;
+}
+
 interface IProjectPart extends IProject {
   part: number;
 }
@@ -30,51 +36,56 @@ const App = () => {
     const [data, setData] = useState<IResume>(validationData);
     const [showYaml, setShowYaml] = useState<boolean>(false);
 
-    const pushBatchToList = <Type,>(batch: Type[], batchList: (Type[])[]): (Type[])[] => {
+    const pushBatchToList = (batch: IPagePart[], batchList: (IPagePart[])[]): (IPagePart[])[] => {
         if (batch.length > 0) {
             return [...batchList, batch]
         } else {
             return batchList
         }
     };
-    const employments = useMemo(() => {
-        let formattedEmployments: (IEmployment[])[] = [];
-        let currentBatch: IEmployment[] = [];
-        if(data.employments) {
-            data.employments.forEach(employment => {
-                if(employment.startPageBreak) {
-                    formattedEmployments = pushBatchToList(currentBatch, formattedEmployments)
-                    currentBatch = []
-                }
-                currentBatch.push(employment);
-            });
-        }
-        return pushBatchToList(currentBatch, formattedEmployments);
-    }, [data.employments])
-    const projects = useMemo(() => {
-        let formattedProjects: (IProjectPart[])[] = [];
-        let currentBatch: IProjectPart[] = [];
 
+    // Logic to build pages containing projects, employments, and dividers
+    const pages = useMemo(() => {
+        let formattedPages: (IPagePart[])[] = [];
+        let currentBatch: IPagePart[] = [];
+        const projectsHeading = data.projectsHeading || 'Projects'
+        const employmentsHeading = data.employmentsHeading || 'Employments'
 
         if(data.projects) {
+            currentBatch.push({ divider: projectsHeading });
             data.projects.forEach(project => {
+                // There can be page breaks in the middle of a project,
+                // so the two parts are handles separetly.
                 const projectSum = {...project, part: ProjectPart.Summary}
                 const projectResp = {...project, part: ProjectPart.Responsibilities}
                 if(project.startPageBreak) {
-                    formattedProjects = pushBatchToList(currentBatch, formattedProjects)
-                    currentBatch = []
+                    formattedPages = pushBatchToList(currentBatch, formattedPages)
+                    currentBatch = [{ divider: projectsHeading }]
                 }
-                currentBatch.push(projectSum);
+                currentBatch.push({ project: projectSum });
 
                 if(project.middlePageBreak) {
-                    formattedProjects = pushBatchToList(currentBatch, formattedProjects)
-                    currentBatch = []
+                    formattedPages = pushBatchToList(currentBatch, formattedPages)
+                    currentBatch = [{ divider: projectsHeading }]
                 }
-                currentBatch.push(projectResp);
+                currentBatch.push({ project: projectResp });
             });
         }
-        return pushBatchToList(currentBatch, formattedProjects);
-    }, [data.projects])
+        // If the first employment is on same page, insert divider mid page
+        if (data.employments.length > 0 && !data.employments[0].startPageBreak) {
+            currentBatch.push({ divider: employmentsHeading });
+        }
+        if(data.employments) {
+            data.employments.forEach(employment => {
+                if(employment.startPageBreak) {
+                    formattedPages = pushBatchToList(currentBatch, formattedPages)
+                    currentBatch = [{ divider: employmentsHeading }]
+                }
+                currentBatch.push({ employment: employment });
+            });
+        }
+        return pushBatchToList(currentBatch, formattedPages);
+    }, [data.projects, data.employments, data.projectsHeading, data.employmentsHeading])
 
     useEffect(() => {
         fetch(example)
@@ -116,7 +127,7 @@ const App = () => {
                 height: '100vh',
                 overflowX: 'auto'
             }}>
-                {createPage(data, projects, employments)}
+                {createPage(data, pages)}
             </div>
         </div>
     );
@@ -132,7 +143,7 @@ const ErrorFallback = () => {
   );
 }
 
-const createPage = (data: IResume, projects: (IProjectPart[])[], employments: (IEmployment[])[]) => {
+const createPage = (data: IResume, pages: (IPagePart[])[]) => {
     return (
         <div id="printableDiv">
             <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -146,25 +157,16 @@ const createPage = (data: IResume, projects: (IProjectPart[])[], employments: (I
                     }
                     
                 </Page>
-                {projects.map(pages =>
+                {pages.map(page =>
                     <Page>
-                        <Divider title={data.projectsHeading || 'Projects'} marginTop='0mm'/>
-                        {pages.map((project)=>
+                        {page.map((part)=>
                             <>
-                            {project.part === ProjectPart.Summary ?
-                                <ProjectSummary project={project}/> :
-                                <ProjectResponsibilities project={project}/>
-                            }
+                            { part.divider ? <Divider title={part.divider} marginTop='0mm'/> : "" }
+                            { part.project ?  (part.project.part === ProjectPart.Summary ?
+                                <ProjectSummary project={part.project}/> :
+                                <ProjectResponsibilities project={part.project}/> ): ""}
+                            { part.employment ? <Employment employment={part.employment}/> : "" }
                             </>
-                        )}
-                    </Page>
-                )}
-
-                {employments.map(pages =>
-                    <Page>
-                        <Divider title={data.employmentsHeading || 'Employments'} marginTop='0mm'/>
-                        {pages.map((employment)=>
-                            <Employment employment={employment}/>
                         )}
                     </Page>
                 )}
