@@ -2047,9 +2047,9 @@
     "@types/trusted-types" "*"
 
 "@types/domutils@*":
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/@types/domutils/-/domutils-1.7.4.tgz#bb5f1807673e295782614b0a383b4dc1ecd2af97"
-  integrity sha512-w542nRQ0vpXQjLYP52LKqrugQtUq580dEDiDIyZ6IBmV8a3LXjGVNxfj/jUQxS0kDsbZAWsSxQOcTfVX3HRdwg==
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/@types/domutils/-/domutils-1.7.5.tgz#2cdddf4fd0c8675543e4ffb3fb1ee6ae0f1b0ee0"
+  integrity sha512-AyJIz5ndX3jgcorGmPtWlNLJwsVYqGXGc//uPyVybLAQw9ayV8RJ/kWL0rJC5XjUGGYyDezL6wVJs06SNPmLpg==
   dependencies:
     domhandler "^2.4.0"
 
@@ -2242,9 +2242,9 @@
     "@types/react" "*"
 
 "@types/react-html-parser@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@types/react-html-parser/-/react-html-parser-2.0.2.tgz#9b7e1b99657967e614aebf3f87d78a3fd0a1602c"
-  integrity sha512-avS2QzBMCUTGO2+gi3rWG6WreuU8zhf4b5CbS11itYlvLbwt5wmxBqQN4/f2z/JR/6Kvdt8ohAxhztb8XQHdPQ==
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-html-parser/-/react-html-parser-2.0.3.tgz#48265108be1b113e7ed88d247049030427e3af9b"
+  integrity sha512-pDinuMjC+u4BDTit6VW7Rwot1ToIrzlRK/Eymssndfuamno6ydf7UdyzXz+VjNdf2xtSUSuW1bYHk7S/SecikA==
   dependencies:
     "@types/htmlparser2" "*"
     "@types/react" "*"
