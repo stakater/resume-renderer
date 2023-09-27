@@ -3,7 +3,7 @@ import { ISummary } from "../interfaces/resume.interface";
 
 const Summary = ({summary, educationHeading}: {summary: ISummary, educationHeading: string | undefined}) => {
     return (
-        <Box display="flex" width="100%" paddingTop="10mm">
+        <Box display="flex" width="100%" paddingTop={summary.paddingTop}>
             {/* First Box */}
             <Box display="inline-block" width="25%" paddingLeft="10mm" paddingRight="5mm">
                 <img alt="" width="100%" src={process.env.PUBLIC_URL + "/persona-icon.png"}/>

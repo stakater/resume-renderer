@@ -14,6 +14,7 @@ export interface IResume {
 }
 
 export interface ISummary {
+    paddingTop: string;
     name: string;
     title: string;
     description: string;

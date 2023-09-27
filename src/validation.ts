@@ -7,6 +7,7 @@ export const validationData: IResume = {
   projectsHeading: '',
   skillSetHeading: '',
   "summary": {
+    paddingTop: "10mm",
     name: "Moatter",
     title: "Digial designer",
     description:`Moatter is a passionate digital designer with more than 4 years of experience in the design
