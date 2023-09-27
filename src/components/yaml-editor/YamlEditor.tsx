@@ -31,7 +31,7 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
           // If property in input is a list, each element must be checked
           if (Array.isArray(input[key])) {
             input[key].forEach( (subInput: any, index: number) =>
-              checkContainsKeys(subInput, validationInput[key][0], `${key}-${index}`)
+              checkContainsKeys(subInput, validationInput[key][0], `${searchKey}/${key}-${index}`)
             )
           // Recursively check properties in property(object) of key
           } else if (typeof(input[key]) === "object") {
@@ -52,7 +52,7 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
     try {
       const newJsonData = yaml.load(newYamlText);
       if (newJsonData && typeof newJsonData === 'object') {
-        checkContainsKeys(newJsonData, validationData, "root level")
+        checkContainsKeys(newJsonData, validationData, "")
         setError(null);
         yamlChange(newJsonData);
       } else {
@@ -80,7 +80,8 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
       style={
         {
           width: '100%',
-          marginBlock: 20
+          marginBlock: 20,
+          height: 'calc(100vh - 120px)',
         }
       }
       setOptions={{ useWorker: false }}
@@ -88,6 +89,7 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
         theme="github"
         value={yamlText}
         onChange={handleEditorChange}
+        showPrintMargin={false}
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
       />
