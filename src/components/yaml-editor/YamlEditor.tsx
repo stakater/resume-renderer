@@ -89,6 +89,7 @@ const YAMLEditor: React.FC<any> = ({ initialJSON, yamlChange }: any) => {
         theme="github"
         value={yamlText}
         onChange={handleEditorChange}
+        showPrintMargin={false}
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
       />
