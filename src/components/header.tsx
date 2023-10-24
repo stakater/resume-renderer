@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Box from "./box";
+import {ResumeContext} from "../resume-context";
 
 const Header = () => {
+    const {editorData} = useContext(ResumeContext)
     return (
         <Box display="flex" justifyContent="space-between" alignItems="center" className="header">
             {/* Logo aligned to the far left */}
@@ -13,13 +15,12 @@ const Header = () => {
             <Box display="flex" alignItems="start" fontSize="0.7em" lineHeight="1.5">
                 <Box flexDirection="column" marginRight={20}>
                     <Box><b>Address</b></Box>
-                    <Box>David Bagares Gata 26A,</Box>
-                    <Box>111 38 Stockholm, Sweden</Box>
+                    <pre style={{margin: 0}}>{editorData.companyAddress}</pre>
                 </Box>
 
                 <Box flexDirection="column">
                     <Box><b>Contact</b></Box>
-                    <Box>+46(0)739-458753</Box>
+                    <Box>{editorData.contactPhoneNumber}</Box>
                 </Box>
             </Box>
         </Box>

@@ -1,4 +1,6 @@
 export interface IResume {
+    companyAddress: string,
+    contactPhoneNumber: string,
     certificationsHeading: string;
     skillSetHeading: string;
     educationHeading: string;
