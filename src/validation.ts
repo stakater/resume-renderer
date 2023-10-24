@@ -1,6 +1,8 @@
 import { IResume } from "./interfaces/resume.interface";
 
 export const validationData: IResume = {
+  companyAddress: 'David Bagares Gata 26A,\n111 38 Stockholm, Sweden',
+  contactPhoneNumber: '+46(0)739-458753',
   certificationsHeading: '',
   educationHeading: '',
   employmentsHeading: '',

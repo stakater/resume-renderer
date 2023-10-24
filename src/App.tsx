@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState} from 'react';
-import { ErrorBoundary, useErrorBoundary } from "react-error-boundary";
+import {useEffect, useMemo, useState} from 'react';
+import {ErrorBoundary, useErrorBoundary} from "react-error-boundary";
 import './App.css';
 import Page from "./components/page";
 import Divider from "./components/divider";
@@ -10,25 +10,26 @@ import ProjectResponsibilities from "./components/project-responsibilities";
 import Employment from "./components/employment";
 import {marked} from 'marked';
 import example from "./Example.md";
-import { validationData } from './validation';
-import { IResume, IProject, IEmployment } from './interfaces/resume.interface';
+import {validationData} from './validation';
+import {IEmployment, IProject, IResume} from './interfaces/resume.interface';
 import YAMLEditor from './components/yaml-editor/YamlEditor';
 import InfoEditor from './components/info-editor/InfoEditor';
 import Certifications from './components/certifications';
+import {ResumeContext} from "./resume-context";
 
 const ProjectPart = {
-	Summary: 0,
-	Responsibilities: 1,
+    Summary: 0,
+    Responsibilities: 1,
 }
 
 interface IPagePart {
-  divider?: string;
-  project?: IProjectPart;
-  employment?: IEmployment;
+    divider?: string;
+    project?: IProjectPart;
+    employment?: IEmployment;
 }
 
 interface IProjectPart extends IProject {
-  part: number;
+    part: number;
 }
 
 const App = () => {
@@ -51,37 +52,37 @@ const App = () => {
         const projectsHeading = data.projectsHeading || 'Projects'
         const employmentsHeading = data.employmentsHeading || 'Employments'
 
-        if(data.projects) {
-            currentBatch.push({ divider: projectsHeading });
+        if (data.projects) {
+            currentBatch.push({divider: projectsHeading});
             data.projects.forEach(project => {
                 // There can be page breaks in the middle of a project,
                 // so the two parts are handles separetly.
                 const projectSum = {...project, part: ProjectPart.Summary}
                 const projectResp = {...project, part: ProjectPart.Responsibilities}
-                if(project.startPageBreak) {
+                if (project.startPageBreak) {
                     formattedPages = pushBatchToList(currentBatch, formattedPages)
-                    currentBatch = [{ divider: projectsHeading }]
+                    currentBatch = [{divider: projectsHeading}]
                 }
-                currentBatch.push({ project: projectSum });
+                currentBatch.push({project: projectSum});
 
-                if(project.middlePageBreak) {
+                if (project.middlePageBreak) {
                     formattedPages = pushBatchToList(currentBatch, formattedPages)
-                    currentBatch = [{ divider: projectsHeading }]
+                    currentBatch = [{divider: projectsHeading}]
                 }
-                currentBatch.push({ project: projectResp });
+                currentBatch.push({project: projectResp});
             });
         }
         // If the first employment is on same page, insert divider mid page
         if (data.employments.length > 0 && !data.employments[0].startPageBreak) {
-            currentBatch.push({ divider: employmentsHeading });
+            currentBatch.push({divider: employmentsHeading});
         }
-        if(data.employments) {
+        if (data.employments) {
             data.employments.forEach(employment => {
-                if(employment.startPageBreak) {
+                if (employment.startPageBreak) {
                     formattedPages = pushBatchToList(currentBatch, formattedPages)
-                    currentBatch = [{ divider: employmentsHeading }]
+                    currentBatch = [{divider: employmentsHeading}]
                 }
-                currentBatch.push({ employment: employment });
+                currentBatch.push({employment: employment});
             });
         }
         return pushBatchToList(currentBatch, formattedPages);
@@ -104,7 +105,7 @@ const App = () => {
         smartypants: false,
         xhtml: false
     });
-    const yamlChange = (newData: any)=> {
+    const yamlChange = (newData: any) => {
         setData({...newData});
     }
     return (
@@ -119,7 +120,7 @@ const App = () => {
                 height: '100vh',
                 overflowX: 'auto',
             }}>
-                <button onClick={() => setShowYaml(pre => !pre)}>Show {showYaml? 'Editor view': 'Yaml View'}</button>
+                <button onClick={() => setShowYaml(pre => !pre)}>Show {showYaml ? 'Editor view' : 'Yaml View'}</button>
                 {!showYaml && <InfoEditor data={data} setData={setData}></InfoEditor>}
                 {showYaml && <YAMLEditor initialJSON={data} yamlChange={yamlChange}></YAMLEditor>}
             </div>
@@ -133,45 +134,47 @@ const App = () => {
     );
 }
 const ErrorFallback = () => {
-  const { resetBoundary } = useErrorBoundary();
+    const {resetBoundary} = useErrorBoundary();
 
-  return (
-    <div role="alert" id="printableDiv" style={{padding: "10mm"}}>
-      <p>Something went wrong! Check console for errors.</p>
-      <button onClick={resetBoundary}>Try again</button>
-    </div>
-  );
+    return (
+        <div role="alert" id="printableDiv" style={{padding: "10mm"}}>
+            <p>Something went wrong! Check console for errors.</p>
+            <button onClick={resetBoundary}>Try again</button>
+        </div>
+    );
 }
 
 const createPage = (data: IResume, pages: (IPagePart[])[]) => {
     return (
-        <div id="printableDiv">
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <Page>
-                    <Summary summary={data.summary} educationHeading={data.educationHeading}/>
-                    {data.skillSet && <><Divider title={data.skillSetHeading || 'Skillset'}/>
-                    <Skills skillSet={data.skillSet}/> </>}
-                    {data.certifications?.length > 0  && 
-                    <><Divider title={data.certificationsHeading || 'Certifications'}/>
-                    <Certifications certifications={data.certifications}></Certifications></>
-                    }
-                    
-                </Page>
-                {pages.map(page =>
+        <ResumeContext.Provider value={{editorData: data}}>
+            <div id="printableDiv">
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
                     <Page>
-                        {page.map((part)=>
-                            <>
-                            { part.divider ? <Divider title={part.divider} marginTop='0mm'/> : "" }
-                            { part.project ?  (part.project.part === ProjectPart.Summary ?
-                                <ProjectSummary project={part.project}/> :
-                                <ProjectResponsibilities project={part.project}/> ): ""}
-                            { part.employment ? <Employment employment={part.employment}/> : "" }
-                            </>
-                        )}
+                        <Summary summary={data.summary} educationHeading={data.educationHeading}/>
+                        {data.skillSet && <><Divider title={data.skillSetHeading || 'Skillset'}/>
+                            <Skills skillSet={data.skillSet}/> </>}
+                        {data.certifications?.length > 0 &&
+                            <><Divider title={data.certificationsHeading || 'Certifications'}/>
+                                <Certifications certifications={data.certifications}></Certifications></>
+                        }
+
                     </Page>
-                )}
-            </ErrorBoundary>
-        </div>
+                    {pages.map(page =>
+                        <Page>
+                            {page.map((part) =>
+                                <>
+                                    {part.divider ? <Divider title={part.divider} marginTop='0mm'/> : ""}
+                                    {part.project ? (part.project.part === ProjectPart.Summary ?
+                                        <ProjectSummary project={part.project}/> :
+                                        <ProjectResponsibilities project={part.project}/>) : ""}
+                                    {part.employment ? <Employment employment={part.employment}/> : ""}
+                                </>
+                            )}
+                        </Page>
+                    )}
+                </ErrorBoundary>
+            </div>
+        </ResumeContext.Provider>
     )
 }
 export default App;
